@@ -244,17 +244,17 @@ void setColon(bool on) {
   Wire.endTransmission();
 }
 
-void lightMinutes(uint8_t minute, uint8_t word) {
+void lightMinutes(uint8_t minute_flags, uint8_t word_flags) {
   
-  digitalWrite(PIN_DISP_MIN_FIVE, (minute & 0b00001));
-  digitalWrite(PIN_DISP_MIN_TEN, (minute & 0b00010) >> 1);
-  digitalWrite(PIN_DISP_MIN_FIFTEEN, (minute & 0b00100) >> 2);
-  digitalWrite(PIN_DISP_MIN_TWENTY, (minute & 0b01000) >> 3);
-  digitalWrite(PIN_DISP_MIN_HALF, (minute & 0b10000) >> 4);
+  digitalWrite(PIN_DISP_MIN_FIVE, (minute_flags & 0b00001));
+  digitalWrite(PIN_DISP_MIN_TEN, (minute_flags & 0b00010) >> 1);
+  digitalWrite(PIN_DISP_MIN_FIFTEEN, (minute_flags & 0b00100) >> 2);
+  digitalWrite(PIN_DISP_MIN_TWENTY, (minute_flags & 0b01000) >> 3);
+  digitalWrite(PIN_DISP_MIN_HALF, (minute_flags & 0b10000) >> 4);
 
-  digitalWrite(PIN_DISP_WORD_OCLOCK, (word & 0b001));
-  digitalWrite(PIN_DISP_WORD_PAST, (word & 0b010) >> 1);
-  digitalWrite(PIN_DISP_WORD_TO, (word & 0b100) >> 2);
+  digitalWrite(PIN_DISP_WORD_OCLOCK, (word_flags & 0b001));
+  digitalWrite(PIN_DISP_WORD_PAST, (word_flags & 0b010) >> 1);
+  digitalWrite(PIN_DISP_WORD_TO, (word_flags & 0b100) >> 2);
 }
 
 void writeTimeToDisplay() {
